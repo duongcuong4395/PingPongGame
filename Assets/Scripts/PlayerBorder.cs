@@ -8,15 +8,24 @@ public class PlayerBorder : MonoBehaviour {
 
 	void OnCollisionEnter(Collision col)
 	{
-		Ball ball = col.gameObject.GetComponent<Ball> ();
+        // Call another ball from another Ball(Script)
+        // Get all variable and method, function,....
+        Ball ball = col.gameObject.GetComponent<Ball> ();
 		if (ball != null) {
 			ball.transform.position = new Vector3 (0f, 1f, 0f);
-
-			if (player == ePlayer.Right) {
+            
+            
+            // 
+            if (player == ePlayer.Right) {
 				score.scorePlayerLeft++;
-			} else if (player == ePlayer.Left) {
+                ball.initialImpulse.x = 8.0f;
+                ball.initialImpulse.z = 6.0f;
+            } else if (player == ePlayer.Left) {
 				score.scorePlayerRight++;
-			}
+                ball.initialImpulse.x = 8.0f;
+                ball.initialImpulse.z = 6.0f;
+
+            }
 		}
 	}
 }
